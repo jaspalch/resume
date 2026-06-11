@@ -1,0 +1,35 @@
+\cvsection{Experience}
+
+\begin{cventries}
+
+  \cventry
+    {Software Engineer $\to$ Senior Software Engineer, HyperIQ}
+    {Cloudian Inc.}
+    {Remote}
+    {Mar. 2020 -- Jun. 2026}
+    {
+      \begin{cvitems}
+        \item {Owned engineering for HyperIQ, a Grafana/Prometheus-based monitoring and observability platform shipped across 15 product releases and deployed on-premises in 400+ active customer environments alongside Cloudian HyperStore (S3-compatible object storage).}
+        \item {Designed and shipped HyperIQ's alerting system (30+ production rules covering disk fill, NTP drift, SMART drive health, service availability, CPU temperature, network degradation, and Cassandra tombstone accumulation); later led full migration from Prometheus Alertmanager to Grafana unified alerting, preserving customer-customized thresholds and notification routing through upgrades spanning three major version gaps.}
+        \item {Built \texttt{admin-exporter}, a custom Prometheus exporter in Go that queried the HyperStore Admin API to surface per-user, per-group, and per-bucket storage capacity metrics - complementing log-based request-activity metrics and enabling quota visibility that logs alone couldn't provide; fixed a correctness bug where every EC-policy bucket reported the wrong raw size due to an overloaded API field, adding a full unit test matrix covering all five RF/EC storage policy configurations.}
+        \item {Resolved S3 Analytics dashboards returning no data on high-cardinality clusters for time ranges over 7 days by replacing fixed-interval \texttt{rate()}/\texttt{increase()} windows with Grafana's \texttt{\$\_\_rate\_interval}, enabling enterprise deployments to visualize 30-day trends for the first time.}
+        \item {Built multi-cluster monitoring support, allowing a single HyperIQ instance to monitor multiple HyperStore clusters simultaneously - added \texttt{cluster add/remove} CLI commands, per-cluster Prometheus configuration generation, and independent SSH credential management per cluster.}
+        \item {Diagnosed and resolved P1 production incidents at enterprise accounts remotely from customer-provided logs and Prometheus data, shipping targeted fixes - sometimes as pre-release RPMs to unblock priority customers without waiting for the next release; also served as the primary technical authority for HyperIQ across SA and SE teams for pre-sales assessments and customer customization requests.}
+        \item {Migrated the HyperIQ OVA base OS from Ubuntu to Rocky Linux 8.10, updating the full build pipeline, switching network configuration to NetworkManager, handling VMware/vSphere/Xen VM metadata requirements, and building installer logic for the cross-OS customer upgrade path.}
+        \item {Built a Grafana Agent $\to$ OTel Collector config translation tool in Go for a customer deployment, generating valid receiver/exporter/pipeline configuration from existing scrape configs with TLS and bcrypt-based auth; packaged as an RPM with a CLI subcommand to update configs in place.}
+      \end{cvitems}
+    }
+
+  \cventry
+    {Software Engineer, HyperStore}
+    {Cloudian Inc.}
+    {San Mateo, CA}
+    {Aug. 2017 -- Mar. 2020}
+    {
+      \begin{cvitems}
+        \item {Maintained and extended \texttt{system\_setup.sh}, the primary Bash/Puppet/SaltStack installer for HyperStore, resolving reliability issues across node addition, multi-DC upgrade paths, and uninstall cleanup; improved upgrade reliability by adding survey file handling, conflicting servicemap detection, and correct settings migration across versions.}
+        \item {Automated TLS certificate generation and configuration during install - including unique self-signed cert generation per install, IAM/CMC keystore management, and migration to PKCS12 format - and extended the installer to support HyperStore Hardening (HSH) mode with root password disable and SALT-based user management.}
+      \end{cvitems}
+    }
+
+\end{cventries}

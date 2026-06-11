@@ -1,0 +1,33 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt, letterpaper]{awesome-cv}
+
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+% Color: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange
+%        awesome-nephritis, awesome-concrete, awesome-darknight
+\colorlet{awesome}{awesome-skyblue}
+
+\setbool{acvSectionColorHighlight}{true}
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\name{Jaspal}{Chauhan}
+\position{Senior Software Engineer{\enskip\cdotp\enskip}Observability \& Infrastructure}
+\extrainfo{Remote (Fresno, CA)}
+\email{jaspalch95@gmail.com}
+\linkedin{jaspal-chauhan}
+\github{jaspalch}
+
+\begin{document}
+
+\makecvheader[C]
+
+\makecvfooter{}{}{\thepage}
+
+\input{sections/summary.tex}
+\input{sections/skills.tex}
+\input{sections/experience.tex}
+\input{sections/education.tex}
+
+\end{document}

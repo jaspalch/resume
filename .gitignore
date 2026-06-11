@@ -1,0 +1,23 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+missfont.log
+
+# Private job search notes — never commit
+resume_bullets_and_star_stories.md
+linkedin_content.md
+
+# Backup files
+*.tex~
+*.el~
+*.md~
+
+# Keep PDFs out of git (generate from source)
+*.pdf
