@@ -7,10 +7,13 @@ PDF := $(BUILD_DIR)/resume-awesome.pdf
 
 .PHONY: all clean open
 
-all: $(PDF)
+all: $(PDF) $(BUILD_DIR)/index.html
 
 $(PDF): $(SRC) sections/*.tex awesome-cv.cls
 	@$(XELATEX) -output-directory $(BUILD_DIR) $(SRC)
+
+$(BUILD_DIR)/index.html: index.html
+	@cp index.html $(BUILD_DIR)/index.html
 
 clean:
 	@rm -rf $(BUILD_DIR)
