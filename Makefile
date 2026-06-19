@@ -1,9 +1,9 @@
-XELATEX := $(shell which xelatex)
-SRC := resume-awesome.tex
-PDF := resume-awesome.pdf
-
 BUILD_DIR := $(shell pwd)/build
 $(shell mkdir -p $(BUILD_DIR))
+
+XELATEX := $(shell which xelatex)
+SRC := resume-awesome.tex
+PDF := $(BUILD_DIR)/resume-awesome.pdf
 
 .PHONY: all clean open
 
