@@ -11,15 +11,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: texlive/texlive
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install system build deps
-        run: sudo apt install -y texlive-full
-
       - name: Build resume from LaTeX template
         run: make
-
       - name: Upload static files as artifact
         id: deployment
         uses: actions/upload-pages-artifact@v3
