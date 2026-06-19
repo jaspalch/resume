@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install build deps
-        run: sudo apt install -y texlive-xetex fonts-font-awesome fonts-roboto
+        run: sudo apt install -y texlive-xetex fonts-font-awesome fonts-roboto texlive-fonts-extra
 
       - name: Build resume from LaTeX template
         run: make
