@@ -15,10 +15,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install system build deps
-        run: sudo apt install -y texlive-xetex texlive-fonts-extra
-
-      - name: Install TeXLive packages
-        run: sudo tlmgr install fontawesome6
+        run: sudo apt install -y texlive-full
 
       - name: Build resume from LaTeX template
         run: make
