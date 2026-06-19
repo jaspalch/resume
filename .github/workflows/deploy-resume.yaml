@@ -14,12 +14,6 @@ jobs:
     container: texlive/texlive
     steps:
       - uses: actions/checkout@v4
-      - name: Install fonts
-        run: |
-          mkdir -p /usr/local/share/fonts
-          curl -L "https://fonts.google.com/download?family=Source+Sans+Pro" -o /tmp/SourceSansPro.zip
-          unzip /tmp/SourceSansPro.zip -d /usr/local/share/fonts/
-          fc-cache -fv
       - name: Build resume from LaTeX template
         run: make
       - name: Upload static files as artifact
