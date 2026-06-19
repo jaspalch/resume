@@ -1,22 +1,30 @@
-BUILD_DIR := $(shell pwd)/build
-$(shell mkdir -p $(BUILD_DIR))
-
-XELATEX := $(shell which xelatex)
+BUILD_DIR := build
+SITE_DIR := public
 SRC := resume-awesome.tex
-PDF := $(BUILD_DIR)/resume-awesome.pdf
+NAME := jaspal-chauhan-resume
+PDF := $(BUILD_DIR)/$(NAME).pdf
 
-.PHONY: all clean open
+$(shell mkdir -p $(BUILD_DIR) $(SITE_DIR))
 
-all: $(PDF) $(BUILD_DIR)/index.html
+ifeq ($(GITHUB_ACTIONS),)
+DOCKER_RUN := docker run --rm -v $(shell pwd):/resume -w /resume texlive/texlive
+else
+DOCKER_RUN :=
+endif
 
-$(PDF): $(SRC) sections/*.tex awesome-cv.cls
-	@$(XELATEX) -output-directory $(BUILD_DIR) $(SRC)
+.PHONY: all site clean open
 
-$(BUILD_DIR)/index.html: index.html
-	@cp index.html $(BUILD_DIR)/index.html
+all: $(PDF) site
 
-clean:
-	@rm -rf $(BUILD_DIR)
+site: $(PDF)
+	@cp $(PDF) $(SITE_DIR)/$(NAME).pdf
+	@echo '<meta http-equiv="refresh" content="0; url=$(NAME).pdf">' > $(SITE_DIR)/index.html
 
 open: $(PDF)
 	@open $(PDF)
+	 
+$(PDF): $(SRC) sections/*.tex awesome-cv.cls
+	@$(DOCKER_RUN) xelatex -output-directory $(BUILD_DIR) -jobname $(NAME) $(SRC)
+
+clean:
+	@rm -rf $(BUILD_DIR) $(SITE_DIR)
